@@ -42,12 +42,12 @@ Small fixes and bug reports are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) 
 
 ## Releasing
 
-1. Update the version in both manifests.
-2. Run `npm test`, `npm run package`, `npm run check:packages`, and `npm run lint:firefox`.
-3. Try both builds on current and old Reddit.
-4. Commit the change and push a matching tag such as `v1.0.0`.
+1. Update the version in both manifests, run `npm test`, `npm run package`, `npm run check:packages`, and `npm run lint:firefox`, then try both builds on current and old Reddit.
+2. Commit the changes and push them to GitHub.
+3. On GitHub, create a release targeting that commit with a matching tag such as `v1.0.2`.
+4. Publish the release. GitHub Actions will build and attach both browser packages.
 
-GitHub Actions checks both packages and attaches them to a GitHub Release. Store description text is kept in [STORE_LISTING.md](STORE_LISTING.md).
+Draft releases do not trigger the build until they are published. Store description text is kept in [STORE_LISTING.md](STORE_LISTING.md).
 
 ## License
 
