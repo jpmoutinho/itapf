@@ -4,11 +4,9 @@ const fs = require("node:fs");
 
 const chromeManifest = require("../manifest.chrome.json");
 const firefoxManifest = require("../manifest.firefox.json");
-const packageJson = require("../package.json");
 
 test("project versions match", () => {
   assert.equal(chromeManifest.version, firefoxManifest.version);
-  assert.equal(chromeManifest.version, packageJson.version);
 });
 
 test("project has an MIT license", () => {

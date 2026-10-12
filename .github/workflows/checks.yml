@@ -2,6 +2,8 @@ name: Checks
 
 on:
   push:
+    branches:
+      - "**"
   pull_request:
 
 permissions:
@@ -23,11 +25,7 @@ jobs:
         run: npm run package
 
       - name: Check packages
-        run: |
-          unzip -tq dist/itapf-chrome-*.zip
-          unzip -tq dist/itapf-firefox-*.zip
-          unzip -Z1 dist/itapf-chrome-*.zip | rg '^LICENSE$'
-          unzip -Z1 dist/itapf-firefox-*.zip | rg '^LICENSE$'
+        run: npm run check:packages
 
       - name: Lint Firefox package
-        run: npx --yes web-ext lint --source-dir dist/firefox
+        run: npm run lint:firefox

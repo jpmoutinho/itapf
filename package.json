@@ -1,11 +1,12 @@
 {
   "name": "itapf",
-  "version": "1.0.0",
   "private": true,
   "description": "Filter NSFW and portrait posts from r/itookapicture.",
   "license": "MIT",
   "scripts": {
     "test": "node --test",
-    "package": "sh scripts/package.sh"
+    "package": "sh scripts/package.sh",
+    "check:packages": "sh scripts/check-packages.sh",
+    "lint:firefox": "npx --yes web-ext@10.7.0 lint --source-dir dist/firefox"
   }
 }

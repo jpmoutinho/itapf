@@ -29,7 +29,7 @@ Run `npm run package`, then:
 
 ## Development
 
-There are no runtime dependencies. Run `npm test` for the tests and `npm run package` for the two store ZIPs in `dist/`.
+There are no runtime dependencies. Run `npm test` for the tests, `npm run package` for the two store ZIPs in `dist/`, and `npm run check:packages` to check their contents. `npm run lint:firefox` runs Mozilla's package linter after the packages are built.
 
 Most of the extension is in `src/content.js`. It watches Reddit feeds, checks each post, and adds or removes one CSS class. Direct post pages stay accessible. Filtering happens after Reddit creates a post card, so an image may already have downloaded or appeared briefly.
 
@@ -43,7 +43,7 @@ Small fixes and bug reports are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) 
 ## Releasing
 
 1. Update the version in both manifests.
-2. Run `npm test` and `npm run package`.
+2. Run `npm test`, `npm run package`, `npm run check:packages`, and `npm run lint:firefox`.
 3. Try both builds on current and old Reddit.
 4. Commit the change and push a matching tag such as `v1.0.0`.
 
