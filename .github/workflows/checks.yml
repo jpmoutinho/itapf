@@ -1,0 +1,33 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Test
+        run: npm test
+
+      - name: Build packages
+        run: npm run package
+
+      - name: Check packages
+        run: |
+          unzip -tq dist/itapf-chrome-*.zip
+          unzip -tq dist/itapf-firefox-*.zip
+          unzip -Z1 dist/itapf-chrome-*.zip | rg '^LICENSE$'
+          unzip -Z1 dist/itapf-firefox-*.zip | rg '^LICENSE$'
+
+      - name: Lint Firefox package
+        run: npx --yes web-ext lint --source-dir dist/firefox

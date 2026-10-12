@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Check tag and manifest versions
+        run: |
+          tag_version="${GITHUB_REF_NAME#v}"
+          chrome_version="$(node -p "require('./manifest.chrome.json').version")"
+          firefox_version="$(node -p "require('./manifest.firefox.json').version")"
+          test "$tag_version" = "$chrome_version"
+          test "$chrome_version" = "$firefox_version"
+
+      - name: Test
+        run: npm test
+
+      - name: Build packages
+        run: npm run package
+
+      - name: Check packages
+        run: |
+          unzip -tq dist/itapf-chrome-*.zip
+          unzip -tq dist/itapf-firefox-*.zip
+          unzip -Z1 dist/itapf-chrome-*.zip | rg '^LICENSE$'
+          unzip -Z1 dist/itapf-firefox-*.zip | rg '^LICENSE$'
+
+      - name: Lint Firefox package
+        run: npx --yes web-ext lint --source-dir dist/firefox
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          gh release create "$GITHUB_REF_NAME" \
+            "dist/itapf-chrome-$version.zip#Chrome package" \
+            "dist/itapf-firefox-$version.zip#Firefox package" \
+            --verify-tag \
+            --generate-notes \
+            --title "ITAPF $version"

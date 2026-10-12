@@ -1,0 +1,11 @@
+{
+  "name": "itapf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Filter NSFW and portrait posts from r/itookapicture.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "package": "sh scripts/package.sh"
+  }
+}

@@ -1,0 +1,49 @@
+:root {
+  color-scheme: light dark;
+  font: 14px system-ui, sans-serif;
+}
+
+body {
+  min-width: 230px;
+  margin: 0;
+  padding: 16px;
+  background: #fffaf6;
+  color: #222;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+header div, label {
+  display: flex;
+}
+
+header div {
+  flex-direction: column;
+}
+
+small { color: #666; }
+
+label {
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+}
+
+input {
+  width: 36px;
+  height: 20px;
+  accent-color: #ff4500;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background: #222; color: #eee; }
+  small { color: #bbb; }
+  label { border-color: #444; }
+}
