@@ -4,14 +4,16 @@
 
 # ITAPF — r/itookapicture Filter
 
-ITAPF is a small browser extension that hides selected posts from r/itookapicture:
+ITAPF is a small browser extension that hides selected posts from the r/itookapicture subreddit:
 
 - **NSFW** posts.
 - **Portrait** posts.
 
+This extension is aimed at users of the subreddit who otherwise enjoy the regular photography content but have no interest in being exposed to these types of posts.
+
 Both filters start enabled. The extension works on current and old Reddit, remembers your choices locally, and does not collect data.
 
-## Install
+## Manual install
 
 Download the Chrome or Firefox package from the repository's [latest release](../../releases/latest).
 
