@@ -13,6 +13,11 @@ This extension is aimed at users of the subreddit who otherwise enjoy the regula
 
 Both filters start enabled. The extension works on current and old Reddit, remembers your choices locally, and does not collect data.
 
+## Install
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/itapf-%E2%80%94-ritookapicture-fi/ahkgpodnppkbabnpoffgmkpmkkflohjb)
+- [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/itapf-r-itookapicture-filter/)
+
 ## Manual install
 
 Download the Chrome or Firefox package from the repository's [latest release](../../releases/latest).
